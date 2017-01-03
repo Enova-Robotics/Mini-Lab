@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<launch>
+	<include file="$(find minilab_simulation)/launch/minilab_simulation.launch" />
+
+	<node name="map_server" pkg="map_server" type="map_server" args="$(find minilab_navigation)/maps/plateforme.yaml" />
+	<include file="$(find minilab_navigation)/launch/view_navigation.launch" /> 
+	<include file="$(find minilab_navigation)/launch/minilab_move_base.launch" /> 
+	<include file="$(find minilab_navigation)/launch/minilab_amcl.launch" /> 
+</launch>

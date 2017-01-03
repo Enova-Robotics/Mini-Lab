@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+	<include file="$(find minilab_simulation)/launch/minilab_simulation.launch" />
+	<node pkg="minilab_teleop" type="keyboard_teleop_ZQSD" name="keyboard_teleop_ZQSD"  output="screen">
+		<param name="scale_linear" value="1.2" type="double"/>
+		<param name="scale_angular" value="1.5" type="double"/>
+ 		<remap from="keyboard_teleop_ZQSD/cmd_vel" to="cmd_vel"/>
+	</node>
+	<node pkg="rqt_image_view" type="rqt_image_view" name="viewer" />
+</launch>

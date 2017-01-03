@@ -1,0 +1,53 @@
+# Move base node parameters. For full documentation of the parameters in this file, please see
+#
+#  http://www.ros.org/wiki/move_base
+#
+shutdown_costmaps: false
+
+controller_frequency: 15.0
+controller_patience: 10.0
+
+planner_frequency: 10.0
+planner_patience: 5.0
+
+oscillation_timeout: 10.0
+oscillation_distance: 0.5
+
+# goal tolerance parameters
+yaw_goal_tolerance: 0.1
+xy_goal_tolerance: 0.1
+latch_xy_goal_tolerance: true
+
+recovery_behavior_enabled: true
+
+recovery_behaviors:
+  - name: 'super_conservative_reset'
+    type: 'clear_costmap_recovery/ClearCostmapRecovery'
+  - name: 'conservative_reset'
+    type: 'clear_costmap_recovery/ClearCostmapRecovery'
+  - name: 'aggressive_reset'
+    type: 'clear_costmap_recovery/ClearCostmapRecovery'
+  - name: 'rotate_recovery'
+    type: 'rotate_recovery/RotateRecovery'
+
+super_conservative_reset:
+  reset_distance: 12.0
+
+conservative_reset:
+  reset_distance: 6.0
+
+aggressive_reset:
+  reset_distance: 3.0
+
+TrajectoryPlannerROS:
+  max_vel_x: 0.3
+  min_vel_x: 0.05
+  max_vel_th: 0.3
+  min_vel_th: -0.3
+  min_in_place_vel_th: 0.05
+
+  acc_lim_x: 0.4
+  acc_lim_y: 0.0
+  acc_lim_theta: 0.3
+
+  holonomic_robot: false

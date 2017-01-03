@@ -1,0 +1,7 @@
+<launch>
+  <node pkg="minilab_teleop" type="keyboard_teleop_WASD" name="keyboard_teleop_WASD"  output="screen">
+    <param name="scale_linear" value="0.5" type="double"/>
+    <param name="scale_angular" value="1.5" type="double"/>
+    <remap from="keyboard_teleop_WASD/cmd_vel" to="cmd_vel"/>
+  </node>
+</launch>

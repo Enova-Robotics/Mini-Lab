@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+	<node name="map_server" pkg="map_server" type="map_server" arg="$(find navigation_complete)/maps/plateforme.yaml" />
+	<include file="$(find navigation_complete)/launch/view_navigation.launch" /> 
+	<include file="$(find navigation_complete)/launch/move_base_digitalarti.launch" /> 
+	<include file="$(find navigation_complete)/launch/amcl_pioneer.launch" /> 
+
+</launch>

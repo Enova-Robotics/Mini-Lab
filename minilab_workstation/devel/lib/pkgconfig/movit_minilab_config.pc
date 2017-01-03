@@ -1,0 +1,8 @@
+prefix=/home/dgnr/Bureau/Mini-Lab-master/minilab_workstation/devel
+
+Name: movit_minilab_config
+Description: Description of movit_minilab_config
+Version: 0.2.0
+Cflags: 
+Libs: -L/home/dgnr/Bureau/Mini-Lab-master/minilab_workstation/devel/lib 
+Requires: 
