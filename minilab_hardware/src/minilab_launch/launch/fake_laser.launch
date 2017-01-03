@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="cameradepthframe_to_baselink" args="0 0 0.115 0 0 0 base_link camera_depth_frame 100"/>
+    <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan" args="image:=/depth/image" respawn="true"> 
+       <!--param name="output_frame_id" value="/camera_depth_frame"/-->
+       <param name="scan_height" value="290"/> 
+        <param name="scan_time" value="0.125"/>
+        <param name="range_min" value="0.80"/>
+        <param name="range_max" value="3.0"/>
+        <param name="min_height" value=".10"/>
+        <param name="max_height" value="2.0"/>
+    </node>
+</launch>

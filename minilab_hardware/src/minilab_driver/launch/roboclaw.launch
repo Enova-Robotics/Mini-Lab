@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<launch>
+	<!-- run roboclaw driver to control the robot -->
+	<node pkg="roboclaw" type="minilab_node" name="minilab_node" />
+</launch>

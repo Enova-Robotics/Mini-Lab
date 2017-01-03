@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+
+<launch>
+		<node pkg="safe_teleop" type="safe_node_laser.py" name="safe_node_laser" output="screen"/>
+</launch>

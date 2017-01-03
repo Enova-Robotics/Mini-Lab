@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>
+	<arg name="driver_type" default="roboteq_driver" /> <!-- roboclaw for old version -->
+	<include file="$(find minilab_driver)/launch/$(arg driver_type).launch" />
+	<include file="$(find minilab_launch)/launch/minilab_state_publisher.launch" />
+</launch>
+
+

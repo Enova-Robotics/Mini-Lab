@@ -1,0 +1,299 @@
+<launch> 
+	<arg name="robot"/>
+	<arg name="init_done"/>
+	
+	<group unless="$(arg init_done)">
+		
+		<!-- AMCL INIT-->
+		<node pkg="amcl" type="amcl" name="amcl" output="screen" respawn="false">
+			
+			<!-- |||| A Modifier en fonction de la position en mètres du robot N % au robot01 -->
+			<rosparam command="load" file="$(env HOME)/catkin_ws/params/amcl_start_pose_$(arg robot).yaml"/>
+			
+			<!-- remap for namespace -->
+			<remap from="scan" to="/robot$(arg robot)/scan"/>
+			<remap from="initialpose" to="/robot$(arg robot)/initialpose"/>
+			<remap from="robot$(arg robot)/scan" to="/scan"/>
+			
+			
+			<!--Overall filter parameters-->
+			<!--Minimum and maximumallowed number of particles. -->
+			<param name="min_particles" value="300"/>
+			<param name="max_particles" value="5000"/>
+			
+			<!--Maximum error between the true distribution and the estimated distribution.--> 
+			<param name="kld_err" value="0.01"/>
+			 
+			<!--Upper standard normal quantile for (1 - p), where p is the probability 
+			that the error on the estimated distrubition will be less than kld_err.-->
+			<param name="kld_z" value="0.99"/>
+			
+			<!--Translational movement and Rotational movement required before
+			performing a filter update.-->
+			<param name="update_min_d" value="-0.10"/>
+			<param name="update_min_a" value="-0.30"/>
+	
+			<!--Number of filter updates required before resampling.-->
+			<param name="resample_interval" value="10"/>
+			
+			<!--Time with which to post-date the transform that is published, 
+			to indicate that this transform is valid into the future.-->
+			<param name="transform_tolerance" value="0.3"/>
+			
+			<!--Exponential decay rate for the slow (resp. fast) average weight filter, 
+			used in deciding when to recover by adding random poses. 
+			A good value might be 0.001 (resp. 0.1).-->
+			<param name="recovery_alpha_slow" value="0.001"/>
+			<param name="recovery_alpha_fast" value="0.01"/>
+			
+			<!--Initial pose mean (x), (y) and (yaw), used to initialize filter with 
+			Gaussian distribution. Load from yaml file.-->    
+			
+			<!--Initial pose covariance (x*x), (y*y) and (yaw*yaw) used to initialize 
+			filter with Gaussian distribution. -->
+			<param name="initial_cov_xx" value="0.250"/>
+			<param name="initial_cov_yy" value="0.250"/>
+			<param name="initial_cov_aa" value="0.60"/>
+			
+			<!--Maximum rate (Hz) at which scans and paths are published for visualization,
+			-1.0 to disable.-->
+			<param name="gui_publish_rate" value="1.0"/>
+			
+			<!--Maximum rate (Hz) at which to store the last estimated pose and covariance 
+			to the parameter server, in the variables ~param name="initial_pose_* 
+			and ~param name="initial_cov_*. This saved pose will be used on subsequent runs 
+			to initialize the filter. -1.0 to disable. -->
+			<param name="save_pose_rate" value="0.5"/>
+			
+			<!--When set to true, AMCL will subscribe to the map topic rather than making
+			a service call to receive its map.-->
+			<param name="use_map_topic" value="true"/>
+			<remap from="map" to="/map"/>
+			
+			<!--When set to true, AMCL will only use the first map it subscribes to, 
+			rather than updating each time a new one is received.-->
+			<param name="first_map_only" value="false"/>
+			
+			
+			<!--Laser model parameters :    
+			
+			Note that whichever mixture weights are in use should sum to 1. 
+			The beam model uses all 4: z_hit, z_short, z_max, and z_rand. 
+			The likelihood_field model uses only 2: z_hit and z_rand.-->
+			
+			<!--Minimum and Maximum scan range to be considered; -1.0 will cause 
+			the laser's reported minimum range to be used. -->
+			<param name="laser_min_range" value="-1.0"/>
+			<param name="laser_max_range" value="-1.0"/>
+			
+			<!--How many evenly-spaced beams in each scan to be used when updating the filter.-->
+			<param name="laser_max_beams" value="150"/>
+			
+			<!--Mixture weight for the z_... part of the model.-->
+			<param name="laser_z_hit" value="0.95"/>
+			<param name="laser_z_rand" value="0.05"/>
+			<!--Mixture weight for the z_... only use with beam model.-->
+			<param name="laser_z_short" value="0.1"/>
+			<param name="laser_z_max" value="0.05"/>
+			
+			<!--Standard deviation for Gaussian model used in z_hit part of the model.-->
+			<param name="laser_sigma_hit" value="0.2"/>
+			
+			<!--Exponential decay parameter for z_short part of model.-->
+			<param name="laser_lambda_short" value="0.1"/>
+			
+			<!--Maximum distance to do obstacle inflation on map, for use in likelihood_field model.-->
+			<param name="laser_likelihood_max_dist" value="5.0"/>
+			
+			<!--Which model to use, either beam, likelihood_field, or likelihood_field_prob.-->
+			<param name="laser_model_type" value="likelihood_field"/>
+			
+			
+			<!--Odometery model parameters
+			
+			If ~odom_model_type is "diff" then we use the sample_motion_model_odometry 
+			algorithm from Probabilistic Robotics, p136; this model uses the noise 
+			parameters odom_alpha_1 through odom_alpha4, as defined in the book.
+			
+			If ~odom_model_type is "omni" then we use a custom model for an 
+			omni-directional base, which uses odom_alpha_1 through odom_alpha_5. 
+			The meaning of the first four parameters is similar to that for the "diff" model.
+			The fifth parameter capture the tendency of the robot to translate 
+			(without rotating) perpendicular to the observed direction of travel.-->
+			
+			<!--Which model to use, either "diff" or "omni".-->
+			<param name="odom_model_type" value="diff"/>
+			
+			<!--Specifies the expected noise in odometry's rotation estimate from 
+			the rotational component of the robot's motion.-->
+			<param name="odom_alpha1" value="0.30"/>
+			
+			<!--Specifies the expected noise in odometry's rotation estimate from 
+			translational component of the robot's motion.-->
+			<param name="odom_alpha2" value="0.30"/>
+			
+			<!--Specifies the expected noise in odometry's translation estimate from the 
+			translational component of the robot's motion.-->
+			<param name="odom_alpha3" value="0.5"/>
+			
+			<!--Specifies the expected noise in odometry's translation estimate from 
+			the rotational component of the robot's motion.-->
+			<param name="odom_alpha4" value="0.5"/>
+			
+			<!--Translation-related noise parameter (only used if model is "omni").-->
+			<param name="odom_alpha5" value="1.0"/>
+			
+			<!--Which frame to use for odometry, the robot base and frame published .-->
+			<param name="odom_frame_id" value="/robot$(arg robot)/odom"/>
+			<param name="base_frame_id" value="/robot$(arg robot)/base_link"/>
+			<param name="global_frame_id" value="/map"/>
+		</node>
+
+	</group>
+
+	<group if="$(arg init_done)">
+		<!-- ARGS FOR  INITIAL POSE AFTER SWITCH -->
+		<arg name="robot_switch_x"/>
+		<arg name="robot_switch_y"/>
+		<arg name="robot_switch_a"/>
+	
+		<!-- AMCL FOR NAV-->
+		<node pkg="amcl" type="amcl" name="amcl" output="screen" respawn="true">
+			
+			<!-- ******Overall filter parameters******-->
+			<!-- Exponential decay rate for the slow (resp. fast) average weight filter, 
+			 used in deciding when to recover by adding random poses. A good value might
+			 be 0.001 (resp. 0.1). Set to 0.0 to disable. -->
+			<param name="recovery_alpha_slow" value="0.001"/>
+			<param name="recovery_alpha_fast" value="0.001"/>
+			
+			<!-- Time with which to post-date the transform that is published, to
+			 indicate that this transform is valid into the future. -->
+			<param name="transform_tolerance" value="0.1"/>
+			
+			
+			
+            <!--ABOVE = APPROVED-->
+			
+			<!--Overall filter parameters-->
+			<!--Minimum and maximumallowed number of particles. -->
+			<param name="min_particles" value="50"/>
+			<param name="max_particles" value="3000"/>
+			
+			<!--Maximum error between the true distribution and the estimated distribution.--> 
+			<param name="kld_err" value="0.01"/>
+			 
+			<!--Upper standard normal quantile for (1 - p), where p is the probability 
+			that the error on the estimated distrubition will be less than kld_err.-->
+			<param name="kld_z" value="0.99"/>
+			
+			<!--Translational movement and Rotational movement required before
+			performing a filter update.-->
+			<param name="update_min_d" value="0.15"/>
+			<param name="update_min_a" value="0.50"/>
+	
+			<!--Number of filter updates required before resampling.-->
+			<param name="resample_interval" value="5"/>
+			
+			<!--Initial pose covariance (x*x), (y*y) and (yaw*yaw) used to initialize 
+			filter with Gaussian distribution. -->
+			<param name="initial_cov_xx" value="0.001"/>
+			<param name="initial_cov_yy" value="0.001"/>
+			<param name="initial_cov_aa" value="0.05"/>
+			
+			<!--Maximum rate (Hz) at which scans and paths are published for visualization,
+			-1.0 to disable.-->
+			<param name="gui_publish_rate" value="1.0"/>
+			
+			<!--Maximum rate (Hz) at which to store the last estimated pose and covariance 
+			to the parameter server, in the variables ~param name="initial_pose_* 
+			and ~param name="initial_cov_*. This saved pose will be used on subsequent runs 
+			to initialize the filter. -1.0 to disable. -->
+			<param name="save_pose_rate" value="0.5"/>
+			
+			<!--When set to true, AMCL will subscribe to the map topic rather than making
+			a service call to receive its map.-->
+			<param name="use_map_topic" value="true"/>
+			<remap from="map" to="/map"/>
+			
+			<!--When set to true, AMCL will only use the first map it subscribes to, 
+			rather than updating each time a new one is received.-->
+			<param name="first_map_only" value="false"/>
+			
+			
+			<!--Laser model parameters :    
+			
+			Note that whichever mixture weights are in use should sum to 1. 
+			The beam model uses all 4: z_hit, z_short, z_max, and z_rand. 
+			The likelihood_field model uses only 2: z_hit and z_rand.-->
+			
+			<!--Minimum and Maximum scan range to be considered; -1.0 will cause 
+			the laser's reported minimum range to be used. -->
+			<param name="laser_min_range" value="-1.0"/>
+			<param name="laser_max_range" value="-1.0"/>
+			
+			<!--How many evenly-spaced beams in each scan to be used when updating the filter.-->
+			<param name="laser_max_beams" value="180"/>
+			
+			<!--Mixture weight for the z_... part of the model.-->
+			<param name="laser_z_hit" value="0.95"/>
+			<param name="laser_z_rand" value="0.05"/>
+			<!--Mixture weight for the z_... only use with beam model.-->
+			<param name="laser_z_short" value="0.1"/>
+			<param name="laser_z_max" value="0.05"/>
+			
+			<!--Standard deviation for Gaussian model used in z_hit part of the model.-->
+			<param name="laser_sigma_hit" value="0.2"/>
+			
+			<!--Exponential decay parameter for z_short part of model.-->
+			<param name="laser_lambda_short" value="0.1"/>
+			
+			<!--Maximum distance to do obstacle inflation on map, for use in likelihood_field model.-->
+			<param name="laser_likelihood_max_dist" value="2.0"/>
+			
+			<!--Which model to use, either beam, likelihood_field, or likelihood_field_prob.-->
+			<param name="laser_model_type" value="likelihood_field"/>
+			
+			
+			<!--Odometery model parameters
+			
+			If ~odom_model_type is "diff" then we use the sample_motion_model_odometry 
+			algorithm from Probabilistic Robotics, p136; this model uses the noise 
+			parameters odom_alpha_1 through odom_alpha4, as defined in the book.
+			
+			If ~odom_model_type is "omni" then we use a custom model for an 
+			omni-directional base, which uses odom_alpha_1 through odom_alpha_5. 
+			The meaning of the first four parameters is similar to that for the "diff" model.
+			The fifth parameter capture the tendency of the robot to translate 
+			(without rotating) perpendicular to the observed direction of travel.-->
+			
+			<!--Which model to use, either "diff" or "omni".-->
+			<param name="odom_model_type" value="diff"/>
+			
+			<!--Specifies the expected noise in odometry's rotation estimate from 
+			the rotational component of the robot's motion.-->
+			<param name="odom_alpha1" value="0.1"/>
+			
+			<!--Specifies the expected noise in odometry's rotation estimate from 
+			translational component of the robot's motion.-->
+			<param name="odom_alpha2" value="0.1"/>
+			
+			<!--Specifies the expected noise in odometry's translation estimate from the 
+			translational component of the robot's motion.-->
+			<param name="odom_alpha3" value="0.1"/>
+			
+			<!--Specifies the expected noise in odometry's translation estimate from 
+			the rotational component of the robot's motion.-->
+			<param name="odom_alpha4" value="0.10"/>
+			
+			<!--Translation-related noise parameter (only used if model is "omni").-->
+			<param name="odom_alpha5" value="1.0"/>
+			
+			<!--Which frame to use for odometry, the robot base and frame published .-->
+			<param name="odom_frame_id" value="/robot$(arg robot)/odom"/>
+			<param name="base_frame_id" value="/robot$(arg robot)/base_link"/>
+			<param name="global_frame_id" value="/map"/>
+		</node>
+		
+	</group>
+</launch>

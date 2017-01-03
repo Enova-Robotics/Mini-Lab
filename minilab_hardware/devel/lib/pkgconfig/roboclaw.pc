@@ -1,0 +1,8 @@
+prefix=/home/dgnr/Bureau/Mini-Lab-master/minilab_hardware/devel
+
+Name: roboclaw
+Description: Description of roboclaw
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/dgnr/Bureau/Mini-Lab-master/minilab_hardware/devel/lib 
+Requires: 

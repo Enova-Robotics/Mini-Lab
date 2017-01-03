@@ -1,0 +1,2 @@
+driver/roboclaw:driver/roboteq/roboteq_diagnostics:driver/roboteq/roboteq_driver:driver/roboteq/roboteq_msgs:minilab_demo_hardware:minilab_driver:minilab_launch:minilab_navigation:minilab_teleop:odometry_listener:safe_teleop
+-DCATKIN_DEVEL_PREFIX=/home/dgnr/Bureau/Mini-Lab-master/minilab_hardware/devel -DCMAKE_INSTALL_PREFIX=/home/dgnr/Bureau/Mini-Lab-master/minilab_hardware/install -G Unix Makefiles

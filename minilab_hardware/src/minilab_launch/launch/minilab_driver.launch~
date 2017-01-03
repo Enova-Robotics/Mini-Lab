@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>
+	<!-- run minilab driver to control the robot -->
+	<node pkg="minilab_driver" type="minilab_driver_node" name="minilab_driver_node" />
+	<include file="$(find minilab_launch)/launch/minilab_state_publisher.launch" />
+</launch>

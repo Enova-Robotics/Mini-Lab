@@ -1,0 +1,6 @@
+
+
+<launch>
+  <!-- run minilab driver to control the robot -->
+  <node pkg="minilab_driver" type="minilab_driver_node" name="minilab_driver_node" />
+</launch>
