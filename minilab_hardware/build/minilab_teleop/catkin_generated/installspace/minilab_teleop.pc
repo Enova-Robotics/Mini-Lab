@@ -1,8 +1,0 @@
-prefix=/home/dgnr/Bureau/Mini-Lab-master/minilab_hardware/install
-
-Name: minilab_teleop
-Description: Description of minilab_teleop
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/dgnr/Bureau/Mini-Lab-master/minilab_hardware/install/lib 
-Requires: 

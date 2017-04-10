@@ -1,8 +1,0 @@
-prefix=/home/dgnr/Bureau/Mini-Lab-master/minilab_hardware/install
-
-Name: roboteq_driver
-Description: Description of roboteq_driver
-Version: 0.1.2
-Cflags: 
-Libs: -L/home/dgnr/Bureau/Mini-Lab-master/minilab_hardware/install/lib 
-Requires: 

@@ -1,8 +1,0 @@
-prefix=/home/dgnr/Bureau/Mini-Lab-master/minilab_hardware/install
-
-Name: roboteq_msgs
-Description: Description of roboteq_msgs
-Version: 0.1.2
-Cflags: -I/home/dgnr/Bureau/Mini-Lab-master/minilab_hardware/install/include
-Libs: -L/home/dgnr/Bureau/Mini-Lab-master/minilab_hardware/install/lib 
-Requires: 
