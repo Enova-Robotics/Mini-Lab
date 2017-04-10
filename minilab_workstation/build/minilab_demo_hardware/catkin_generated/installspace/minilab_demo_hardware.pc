@@ -1,8 +1,0 @@
-prefix=/home/dgnr/Bureau/Mini-Lab-master/minilab_workstation/install
-
-Name: minilab_demo_hardware
-Description: Description of minilab_demo_hardware
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/dgnr/Bureau/Mini-Lab-master/minilab_workstation/install/lib 
-Requires: 

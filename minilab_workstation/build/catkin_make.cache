@@ -1,2 +1,0 @@
-minilab_demo_hardware:minilab_demo_simulation:minilab_navigation:minilab_simulation:minilab_teleop
--DCATKIN_DEVEL_PREFIX=/home/dgnr/Bureau/Mini-Lab-master/minilab_workstation/devel -DCMAKE_INSTALL_PREFIX=/home/dgnr/Bureau/Mini-Lab-master/minilab_workstation/install -G Unix Makefiles

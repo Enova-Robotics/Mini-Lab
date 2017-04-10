@@ -1,8 +1,0 @@
-prefix=/home/dgnr/Bureau/Mini-Lab-master/minilab_workstation/devel
-
-Name: minilab_demo_simulation
-Description: Description of minilab_demo_simulation
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/dgnr/Bureau/Mini-Lab-master/minilab_workstation/devel/lib 
-Requires: 
