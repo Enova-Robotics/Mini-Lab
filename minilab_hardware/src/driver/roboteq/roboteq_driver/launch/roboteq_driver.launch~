@@ -1,5 +1,0 @@
-<launch>
-	<!-- run roboteq driver to control the robot -->
-	<include file="$(find roboteq_driver)/launch/example.launch"/>
-	<node pkg="roboteq_driver" type="test_cmd_vel.py" name="roboteq_drive" />
-</launch>

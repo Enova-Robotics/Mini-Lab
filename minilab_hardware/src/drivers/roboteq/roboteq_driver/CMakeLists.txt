@@ -15,7 +15,3 @@ install(DIRECTORY launch
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
-add_executable(odometry_listener src/odometry_listener.cpp)
-target_link_libraries(odometry_listener ${catkin_LIBRARIES})
-add_dependencies(odometry_listener odometry_listener_generate_messages_cpp)
-add_dependencies(odometry_listener ${catkin_EXPORTED_TARGETS})
