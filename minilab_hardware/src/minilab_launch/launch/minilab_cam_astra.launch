@@ -1,1 +1,6 @@
-<!-- TODO -->
+<launch>
+   <remap from="/camera/depth/image" to="/depth/image"/>
+   <include file="$(find astra_launch)/launch/astra.launch"/>
+   <remap from="/usb_cam/image_raw" to="/rgb/image"/>
+   <include file="$(find usb_cam)/launch/usb_cam.launch"/>
+</launch>
