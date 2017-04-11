@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>
-	<include file="$(find minilab_simulation)/launch/minilab_simulation.launch" />
-	<node pkg="rqt_image_view" type="rqt_image_view" name="viewer" />
-</launch>
