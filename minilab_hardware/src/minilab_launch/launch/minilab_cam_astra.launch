@@ -3,4 +3,7 @@
    <include file="$(find astra_launch)/launch/astra.launch"/>
    <remap from="/usb_cam/image_raw" to="/rgb/image"/>
    <include file="$(find usb_cam)/launch/usb_cam.launch"/>
+   <node pkg="tf" type="static_transform_publisher" name="cameralink_to_openni_camera" args="0 0 0 0 0 0 openni_camera camera_link 100"/>
+   <include file="$(find minilab_launch)/launch/fake_laser.launch"/>
+   <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0 0 0.1397 0 0 0 base_link laser 100"/>
 </launch>
