@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   roscpp
   rospy
+  sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -103,16 +104,16 @@ include_directories(
 # )
 
 ## Declare a cpp executable
-# add_executable(gazop_node src/gazop_node.cpp)
+add_executable(minilab_joy src/minilab_joy.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(gazop_node gazop_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(gazop_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(minilab_joy
+   ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
