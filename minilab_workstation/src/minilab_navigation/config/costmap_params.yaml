@@ -16,7 +16,7 @@
   origin_z: 0.0
 
   transform_tolerance: 0.3
-  footprint: [[-0.30, 0.30], [-0.30, -0.30], [0.17, -0.30], [0.17, 0.30]]
+  footprint: [[-0.20, 0.10], [-0.20, -0.20], [0.20, -0.20], [0.20, 0.10]]
   footprint_padding: 0.03
 
   obstacles:
@@ -27,7 +27,7 @@
     robot_base_frame: /base_link
 
   inflated:
-    inflation_radius: 1.0
-    cost_scaling_factor: 1.2
+    inflation_radius: 0.2
+    cost_scaling_factor: 1.0
 
 
