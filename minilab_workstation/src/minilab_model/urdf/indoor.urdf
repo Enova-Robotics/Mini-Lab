@@ -1,0 +1,142 @@
+<?xml version="1.0" ?>
+
+<robot name="indoor">
+    <gazebo>
+        <mu1>0.6</mu1>
+        <mu2>0.6</mu2>
+        <static> true </static>
+    </gazebo>
+    <link name="walls">
+        <inertial>
+            <origin xyz="-0.496631578397158 0.977578205182804 -2.17542484667514" rpy="0 0 0" />
+            <mass value="2000" />
+            <inertia ixx="247.944047109463" ixy="-2.89194416615869" ixz="9.24387940903213" iyy="226.218346733999" iyz="70.6539534914747" izz="22.4824247145438" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://minilab_model/meshes/indoor/walls.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://minilab_model/meshes/indoor/walls.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="bed">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://minilab_model/meshes/indoor/bed.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://minilab_model/meshes/indoor/bed.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="bed_joint" type="fixed">
+        <origin xyz="-3.34 0.21 0.2" rpy="1.5708 6.123E-17 1.5708" />
+        <parent link="walls" />
+        <child link="bed" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <link name="wardrobe">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://minilab_model/meshes/indoor/wardrobe.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.1 0.1 0.1 0.1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://minilab_model/meshes/indoor/wardrobe.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="wardrobe_joint" type="fixed">
+        <origin xyz="-1.135 2.249 0" rpy="-1.5708 -6.123E-17 -1.5708" />
+        <parent link="walls" />
+        <child link="wardrobe" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <link name="table">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://minilab_model/meshes/indoor/table.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.1 0.1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://minilab_model/meshes/indoor/table.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="table_joint" type="fixed">
+        <origin xyz="2.225 0.8 0.7" rpy="-1.5708 -6.123E-17 -1.5708" />
+        <parent link="walls" />
+        <child link="table" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <link name="sofa">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://minilab_model/meshes/indoor/sofa.STL" />
+            </geometry>
+            <material  name="">
+                <color rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://minilab_model/meshes/indoor/sofa.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="sofa_joint" type="fixed">
+        <origin xyz="3.04 3.89 0.15" rpy="1.5708 6.123E-17 1.5708" />
+        <parent link="walls" />
+        <child link="sofa" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <gazebo reference="walls">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="sofa">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="table">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="bed">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="wardrobe">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+</robot>

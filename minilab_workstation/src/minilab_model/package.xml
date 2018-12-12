@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>minilab_model</name>
+  <version>1.0.0</version>
+  <description>The minilab_model package</description>
+
+  <maintainer email="sebastien.dignoire@enovarobotics.com">dgnr</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <export>
+
+  </export>
+</package>
