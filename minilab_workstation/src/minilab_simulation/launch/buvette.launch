@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+	<node name="spawn_sdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find minilab_model)/urdf/buvette.sdf -sdf -x 0 -y 4 -model Enovanmental" />
+</launch>

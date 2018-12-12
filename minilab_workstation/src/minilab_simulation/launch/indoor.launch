@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+	<node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-file $(find minilab_model)/urdf/indoor.urdf -urdf -x 0 -y 0 -z 0 -model indoor" output="screen" />
+</launch>

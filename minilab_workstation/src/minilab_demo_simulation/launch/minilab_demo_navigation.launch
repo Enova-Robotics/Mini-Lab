@@ -1,9 +1,13 @@
 <?xml version="1.0"?>
 
 <launch>
-	<include file="$(find minilab_simulation)/launch/minilab_simulation.launch" />
+	<arg name="map" default="buvette" /> <!-- buvette or indoor -->
+	
+	<include file="$(find minilab_simulation)/launch/minilab_simulation.launch" >
+		<arg name="map" value="$(arg map)" />
+	</include>
 
-	<node name="map_server" pkg="map_server" type="map_server" args="$(find minilab_simulation)/map/buvette.yaml" />
+	<node name="map_server" pkg="map_server" type="map_server" args="$(find minilab_model)/map/$(arg map).yaml" />
 	<include file="$(find minilab_navigation)/launch/view_navigation.launch" />
 	<include file="$(find minilab_navigation)/launch/minilab_move_base.launch" />
 	<include file="$(find minilab_navigation)/launch/minilab_amcl.launch" />
