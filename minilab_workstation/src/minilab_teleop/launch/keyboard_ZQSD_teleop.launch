@@ -2,8 +2,7 @@
 
 <launch>
 	<node pkg="minilab_teleop" type="keyboard_teleop_ZQSD" name="keyboard_teleop_ZQSD"  output="screen">
-		<param name="scale_linear" value="0.8" type="double"/>
-		<param name="scale_angular" value="1.5" type="double"/>
-		<remap from="keyboard_teleop_ZQSD/cmd_vel" to="cmd_vel"/>
+		<!-- Uncomment the line below if you want to teleop the turtlesim -->
+		<!--remap from="cmd_vel" to="turtle1/cmd_vel"/--> 
 	</node>
 </launch>

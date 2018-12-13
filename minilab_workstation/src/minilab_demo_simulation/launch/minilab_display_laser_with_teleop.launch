@@ -6,9 +6,7 @@
 		<arg name="map" value="$(arg map)" />
 	</include>
 
-	<node pkg="minilab_teleop" type="keyboard_teleop_ZQSD" name="keyboard_teleop_ZQSD" > <!--output="screen"-->
- 		<remap from="keyboard_teleop_ZQSD/cmd_vel" to="cmd_vel"/>
-	</node>
+	<node pkg="minilab_teleop" type="keyboard_teleop_ZQSD" name="keyboard_teleop_ZQSD" output="screen"/>
 	
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find minilab_demo_simulation)/laser.rviz" />
 </launch>
