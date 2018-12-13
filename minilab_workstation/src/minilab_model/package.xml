@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>minilab_model</name>
-  <version>1.0.0</version>
-  <description>The minilab_model package</description>
+  <version>0.1.0</version>
+  <description>The minilab_model package contains all models of mini-lab but also virtual maps</description>
 
   <maintainer email="sebastien.dignoire@enovarobotics.com">dgnr</maintainer>
 

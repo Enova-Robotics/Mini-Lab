@@ -1,13 +1,11 @@
 <?xml version="1.0"?>
 <package>
   <name>safe_teleop</name>
-  <version>0.0.0</version>
-  <description>The safe_teleop package</description>
+  <version>0.1.0</version>
+  <description>The safe_teleop package contains scripts allowing mini-lab to avoid obstacles when it is moving around the environment</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
-  <!-- Example:  -->
-  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="enova3@todo.todo">enova3</maintainer>
+  <maintainer email="sebastien.dignoire@enovarobotics.com">dgnr</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->

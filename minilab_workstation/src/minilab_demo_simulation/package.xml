@@ -1,12 +1,10 @@
 <?xml version="1.0"?>
 <package>
   <name>minilab_demo_simulation</name>
-  <version>0.0.0</version>
-  <description>The minilab_demo_simulation package</description>
+  <version>0.1.0</version>
+  <description>The minilab_demo_simulation package contains examples of launch files allowing you to control a simulated mini-lab</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
-  <!-- Example:  -->
-  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
   <maintainer email="sebastien.dignoire@enovarobotics.com">dgnr</maintainer>
 
   <license>TODO</license>
