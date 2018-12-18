@@ -5,7 +5,7 @@
 <launch>
 
 	<!-- replace the .yaml file by your own map build with gmapping previously and saved with map_server -->
-	<node name="map_server" pkg="map_server" type="map_server" args="$(find minilab_model)/map/couloir.yaml" />
+	<node name="map_server" pkg="map_server" type="map_server" args="$(find minilab_model)/map/my_map.yaml" />
 	<include file="$(find minilab_navigation)/launch/view_navigation.launch" />
 	<include file="$(find minilab_navigation)/launch/minilab_move_base.launch" />
 	<include file="$(find minilab_navigation)/launch/minilab_amcl.launch" />
