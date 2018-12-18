@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Launch this command on the hardware robot before : roslaunch minilab_launch minilab_driver_camera.launch 
+<!-- Launch this command on the hardware robot via ssh before : roslaunch minilab_launch minilab_driver_camera.launch 
 	or roslaunch minilab_launch minilab_driver_hokuyo.launch -->
 	
 <!-- sudo ntpdate 192.168.0.100 if there is a synchronisation issue between tf -->

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Launch this command on the hardware robot before : roslaunch minilab_launch minilab_driver_hokuyo.launch -->
+<!-- Launch this command on the hardware robot via ssh before : roslaunch minilab_launch minilab_driver_hokuyo.launch -->
 
 <launch>
 
