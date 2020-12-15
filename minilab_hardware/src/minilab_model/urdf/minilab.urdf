@@ -1,0 +1,1000 @@
+<?xml version="1.0"?>
+<robot name="minilab">
+
+
+  <link name="base_link">
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 035"/>
+      <geometry>
+        <box size="0.7 0.7 0.08"/>
+      </geometry>
+
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/embase_dessous.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+
+      <origin rpy="1.57 0 0" xyz="-0.29 0.26 0"/>
+      <material name="Grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
+    </inertial>
+
+  </link>
+
+
+  <link name="base_footprint">
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.7 0.7 0.0"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="base_footprint" type="fixed">
+
+    <origin rpy="0 0 0" xyz="0 0 0.035"/>
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
+
+
+
+  <link name="capot_batterie">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/embase_capot_batterie.STL" scale="0.0016 0.0016 0.0016"/>
+      </geometry>
+      <material name="Grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+
+  </link>
+  <gazebo reference="capot_batterie">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <joint name="capot_batterie" type="fixed">
+
+    <origin rpy="1.57 0 1.57" xyz="-0.29 -0.268 0"/>
+    <parent link="base_link"/>
+    <child link="capot_batterie"/>
+  </joint>
+
+
+  <link name="support_capteur">
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/support_telemetrie.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+      <material name="Grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+  <gazebo reference="support_capteur">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <joint name="support_capteur" type="fixed">
+    <origin rpy="1.57 0 0" xyz="0.185 0.26 0"/>
+
+
+    <parent link="base_link"/>
+    <child link="support_capteur"/>
+  </joint>-->
+
+  <link name="capot_arriere">
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/capot_arriere.STL" scale="0.0016 0.0016 0.0016"/>
+      </geometry>
+      <material name="Grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+
+  <gazebo reference="capot_arriere">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <joint name="capot_arriere" type="fixed">
+    <origin rpy="1.57 0 0" xyz="-0.29 0.26 0.04"/>
+    <parent link="base_link"/>
+    <child link="capot_arriere"/>
+  </joint>
+
+  <link name="capteur_IR5">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/Telemetre-IR-GP2Y0A21YK0F.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+
+  </link>
+  <gazebo reference="capteur_IR5">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <joint name="capteur_IR5" type="fixed">
+
+    <origin rpy="-1.57 0 -2.2" xyz="0.22 -0.18 0.03"/>
+    <parent link="base_link"/>
+    <child link="capteur_IR5"/>
+  </joint>
+
+  <link name="capteur_IR4">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/Telemetre-IR-GP2Y0A21YK0F.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+  <gazebo reference="capteur_IR4">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <joint name="capteur_IR4" type="fixed">
+
+    <origin rpy="-1.57 0 -1.9" xyz="0.262 -0.09 0.03"/>
+    <parent link="base_link"/>
+    <child link="capteur_IR4"/>
+  </joint>
+
+  <link name="capteur_IR3">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/Telemetre-IR-GP2Y0A21YK0F.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+  <gazebo reference="capteur_IR3">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <joint name="capteur_IR3" type="fixed">
+    <origin rpy="-1.57 0 -1.57" xyz="0.27 0.03 0.03"/>
+    <parent link="base_link"/>
+    <child link="capteur_IR3"/>
+  </joint>
+
+
+  <link name="capteur_IR2">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/Telemetre-IR-GP2Y0A21YK0F.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+  <gazebo reference="capteur_IR2">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <joint name="capteur_IR2" type="fixed">
+    <origin rpy="-1.57 0 -1.3" xyz="0.238 0.15 0.03"/>
+    <parent link="base_link"/>
+    <child link="capteur_IR2"/>
+  </joint>
+
+  <link name="capteur_IR1">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/Telemetre-IR-GP2Y0A21YK0F.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <gazebo reference="capteur_IR1">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="capteur_IR1_plugin">
+
+    <sensor type="ray" name="IR1">
+      <pose>0 0 0 0.0 0.0 0.0</pose>
+      <visualize>True</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.01</min_angle>
+            <max_angle>0.01</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.01</min>
+          <max>0.6</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="ros_IR_controller" filename="libgazebo_ros_laser.so">
+        <topicName>IR1</topicName>
+        <frameName>capteur_IR1_plugin</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="capteur_IR2_plugin">
+    <material>Gazebo/Black</material>
+    <sensor type="ray" name="IR2">
+      <pose>0 0 0 0.0 0.0 0.0</pose>
+      <visualize>True</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.01</min_angle>
+            <max_angle>0.01</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.01</min>
+          <max>0.6</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="ros_IR_controller" filename="libgazebo_ros_laser.so">
+        <topicName>IR2</topicName>
+        <frameName>capteur_IR2_plugin</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="capteur_IR3_plugin">
+    <material>Gazebo/Black</material>
+    <sensor type="ray" name="IR3">
+      <pose>0 0 0 0.0 0.0 0.0</pose>
+      <visualize>True</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.01</min_angle>
+            <max_angle>0.01</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.01</min>
+          <max>0.6</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="ros_IR_controller" filename="libgazebo_ros_laser.so">
+        <topicName>IR3</topicName>
+        <frameName>capteur_IR3_plugin</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="capteur_IR4_plugin">
+    <material>Gazebo/Black</material>
+    <sensor type="ray" name="IR4">
+      <pose>0 0 0 0.0 0.0 0.0</pose>
+      <visualize>True</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.01</min_angle>
+            <max_angle>0.01</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.01</min>
+          <max>0.6</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="ros_IR_controller" filename="libgazebo_ros_laser.so">
+        <topicName>IR4</topicName>
+        <frameName>capteur_IR4_plugin</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="capteur_IR5_plugin">
+    <material>Gazebo/Black</material>
+    <sensor type="ray" name="IR5">
+      <pose>0 0 0 0.0 0.0 0.0</pose>
+      <visualize>True</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.01</min_angle>
+            <max_angle>0.01</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.01</min>
+          <max>0.6</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="ros_IR_controller" filename="libgazebo_ros_laser.so">
+        <topicName>IR5</topicName>
+        <frameName>capteur_IR5_plugin</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- IR1 -->
+  <joint name="capteur_IR1_plugin" type="fixed">
+    <origin rpy="1.57 -1.57 0.0" xyz="0.05 0.005 0.2"/>
+    <parent link="capteur_IR1"/>
+    <child link="capteur_IR1_plugin"/>
+  </joint>
+  <link name="capteur_IR1_plugin" />
+
+  <!-- IR2 -->
+  <joint name="capteur_IR2_plugin" type="fixed">
+    <origin rpy="1.57 -1.57 0.0" xyz="0.05 0.005 0.2"/>
+    <parent link="capteur_IR2"/>
+    <child link="capteur_IR2_plugin"/>
+  </joint>
+  <link name="capteur_IR2_plugin" />
+
+  <!-- IR3 -->
+  <joint name="capteur_IR3_plugin" type="fixed">
+    <origin rpy="1.57 -1.57 0.0" xyz="0.05 0.005 0.2"/>
+    <parent link="capteur_IR3"/>
+    <child link="capteur_IR3_plugin"/>
+  </joint>
+  <link name="capteur_IR3_plugin" />
+
+  <!-- IR4 -->
+  <joint name="capteur_IR4_plugin" type="fixed">
+    <origin rpy="1.57 -1.57 0.0" xyz="0.05 0.005 0.2"/>
+    <parent link="capteur_IR4"/>
+    <child link="capteur_IR4_plugin"/>
+  </joint>
+  <link name="capteur_IR4_plugin" />
+
+  <!-- IR5 -->
+  <joint name="capteur_IR5_plugin" type="fixed">
+    <origin rpy="1.57 -1.57 0.0" xyz="0.05 0.005 0.2"/>
+    <parent link="capteur_IR5"/>
+    <child link="capteur_IR5_plugin"/>
+  </joint>
+  <link name="capteur_IR5_plugin" />
+
+
+
+  <joint name="capteur_IR1" type="fixed">
+    <origin rpy="-1.57 0 -0.9" xyz="0.17 0.235 0.03"/>
+    <parent link="base_link"/>
+    <child link="capteur_IR1"/>
+  </joint>
+
+  <link name="capteur_US5">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/US_sensor_SFR02.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+  <gazebo reference="capteur_US5">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <joint name="capteur_US5" type="fixed">
+
+    <origin rpy="-1.57 0 -2.2" xyz="0.22 -0.205 0.094"/>
+    <parent link="base_link"/>
+    <child link="capteur_US5"/>
+  </joint>
+
+  <link name="capteur_US4">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/US_sensor_SFR02.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+  <gazebo reference="capteur_US4">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <joint name="capteur_US4" type="fixed">
+    <origin rpy="-1.57 0 -1.9" xyz="0.28 -0.115 0.094"/>
+
+
+    <parent link="base_link"/>
+    <child link="capteur_US4"/>
+  </joint>
+
+
+  <link name="capteur_US3">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/US_sensor_SFR02.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+  <gazebo reference="capteur_US3">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <joint name="capteur_US3" type="fixed">
+    <origin rpy="-1.57 0 -1.57" xyz="0.29 0.01 0.093"/>
+
+
+    <parent link="base_link"/>
+    <child link="capteur_US3"/>
+  </joint>
+
+  <link name="capteur_US2">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/US_sensor_SFR02.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+  <gazebo reference="capteur_US2">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <joint name="capteur_US2" type="fixed">
+    <origin rpy="-1.57 0 -1.3" xyz="0.27 0.13 0.093"/>
+
+
+    <parent link="base_link"/>
+    <child link="capteur_US2"/>
+  </joint>
+
+
+  <link name="capteur_US1">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/US_sensor_SFR02.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+  <gazebo reference="capteur_US1">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <joint name="capteur_US1" type="fixed">
+    <origin rpy="-1.57 0 -0.9" xyz="0.22 0.217 0.093"/>
+    <parent link="base_link"/>
+    <child link="capteur_US1"/>
+  </joint>
+
+  <link name="base_link_wheel_left_1">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/banebots_wheel_T80P-494BO-HS6.STL" scale="0.0016 0.0016 0.0016"/>
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <gazebo reference="base_link_wheel_left_1">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <joint name="base_link_wheel_left_1" type="fixed">
+    <origin rpy="1.57 0 -1.57" xyz="0.17 -0.27 -0.01"/>
+    <parent link="base_link"/>
+    <child link="base_link_wheel_left_1"/>
+  </joint>
+
+
+  <link name="base_link_wheel_right_1">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/banebots_wheel_T80P-494BO-HS6.STL" scale="0.0016 0.0016 0.0016"/>
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <gazebo reference="base_link_wheel_right_1">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <joint name="base_link_wheel_right_1" type="fixed">
+
+    <origin rpy="1.57 0 -1.57" xyz="0.17 0.30 -0.01"/>
+    <parent link="base_link"/>
+    <child link="base_link_wheel_right_1"/>
+  </joint>-->
+
+  <link name="roue-auto-directrice">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/roue-auto-directrice-Guitel_42-32.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+
+  <joint name="roue-auto-directrice" type="fixed">
+
+    <origin rpy="1.57 0 0" xyz="-0.29 0 -0.025"/>
+    <parent link="base_link"/>
+    <child link="roue-auto-directrice"/>
+  </joint>-->
+
+  <link name="coque">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/coque_moule.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+  <gazebo reference="coque">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <joint name="coque" type="fixed">
+    <origin rpy="1.57 0 0" xyz="-0.28 0.26 0.1"/>
+    <parent link="base_link"/>
+    <child link="coque"/>
+  </joint>
+
+
+  <link name="base_link_wheel_right_2">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/banebots_wheel_T80P-494BO-HS6orange.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+
+      <material name="Orange">
+        <color rgba="1 0.5 0 1"/>
+      </material>
+    </visual>
+
+  </link>
+  <gazebo reference="base_link_wheel_right_2">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <joint name="base_link_wheel_right_2" type="fixed">
+
+    <origin rpy="1.57 0 -1.57" xyz="0.185 0.30 -0.03"/>
+    <parent link="base_link"/>
+    <child link="base_link_wheel_right_2"/>
+  </joint>-->
+
+  <link name="base_link_wheel_left_2">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/banebots_wheel_T80P-494BO-HS6orange.STL" scale="0.0016 0.0016 0.0016"/>
+
+      </geometry>
+      <material name="Orange">
+        <color rgba="1 0.5 0 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+  <gazebo reference="base_link_wheel_left_2">
+    <mu1>0</mu1>
+    <mu2>0</mu2>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <joint name="base_link_wheel_left_2" type="fixed">
+
+    <origin rpy="1.57 0 -1.57" xyz="0.185 -0.27 -0.03"/>
+    <parent link="base_link"/>
+    <child link="base_link_wheel_left_2"/>
+  </joint>-->
+
+  <link name="hokuyo_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="-1.57 0 0" xyz="-0.1 0 0.1"/>
+      <geometry>
+        <mesh filename="package://minilab_simulation/meshes/MINILABSTL/Laser-hokuyo_URG-04LX.STL" scale="0.0016 0.0016 0.0016"/>
+      </geometry>
+      <material name="Grey">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+
+
+  <joint name="hokuyo_joint" type="fixed">
+    <origin rpy="3.14 0 0" xyz="0.2 0.03 0.2"/>
+    <parent link="base_link"/>
+    <child link="hokuyo_link"/>
+  </joint>
+
+
+  <gazebo reference="hokuyo_link">
+    <sensor type="ray" name="laser">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>True</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.57</min_angle>
+            <max_angle>1.57</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>15</max>
+          <resolution>0.01</resolution>
+        </range>
+        <!--<noise>
+        <type>gaussian</type>
+        Noise parameters based on published spec for Hokuyo laser
+        achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+        stddev of 0.01m will put 99.7% of samples within 0.03m of the true reading.
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>-->
+    </ray>
+
+    <plugin name="ros_hokuyo_controller" filename="libgazebo_ros_laser.so">
+      <topicName>scan</topicName>
+      <frameName>hokuyo_link</frameName>
+    </plugin>
+  </sensor>
+</gazebo>
+
+
+
+<!-- openni_camera -->
+<link name="openni_camera">
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.1 0.1 0.1"/>
+    </geometry>
+  </collision>
+  <visual>
+    <origin xyz="-0.35 -0.15 0" rpy="1.57 0 1.57"/>
+    <geometry>
+      <mesh filename="package://minilab_simulation/meshes/MINILABSTL/Kinect - Asus-Xtion-capteur-1.STL" scale="0.0016 0.0016 0.0016"/>
+    </geometry>
+    <material name="Grey">
+      <color rgba="0.1 0.1 0.1 1"/>
+    </material>
+  </visual>
+</link>
+
+<joint name="openni_camera" type="fixed">
+  <origin xyz="0.15 0 0.2"/>
+  <parent link="base_link"/>
+  <child link="openni_camera"/>
+</joint>
+
+<gazebo reference="openni_camera">
+  <sensor type="depth" name="openni_camera_camera">
+
+    <always_on>1</always_on>
+    <visualize>true</visualize>
+    <camera>
+      <horizontal_fov>1.047</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <depth_camera>
+
+      </depth_camera>
+      <clip>
+        <near>0.1</near>
+        <far>100</far>
+      </clip>
+    </camera>
+    <plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>10.0</updateRate>
+      <cameraName>camera</cameraName>
+      <frameName>openni_camera</frameName>
+      <imageTopicName>rgb/image_raw</imageTopicName>
+      <depthImageTopicName>depth/image_raw</depthImageTopicName>
+      <pointCloudTopicName>depth/points</pointCloudTopicName>
+      <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+      <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+      <pointCloudCutoff>0.4</pointCloudCutoff>
+      <hackBaseline>0.07</hackBaseline>
+      <distortionK1>0.0</distortionK1>
+      <distortionK2>0.0</distortionK2>
+      <distortionK3>0.0</distortionK3>
+      <distortionT1>0.0</distortionT1>
+      <distortionT2>0.0</distortionT2>
+      <CxPrime>0.0</CxPrime>
+      <Cx>0.0</Cx>
+      <Cy>0.0</Cy>
+      <focalLength>0.0</focalLength>
+    </plugin>
+  </sensor>
+</gazebo>
+
+
+<static>0</static>
+
+<gazebo>
+  <plugin name='object_controller' filename='libgazebo_ros_planar_move.so'>
+    <commandTopic>cmd_vel</commandTopic>
+    <odometryTopic>odom</odometryTopic>
+    <odometryFrame>odom</odometryFrame>
+    <odometryRate>20.0</odometryRate>
+    <robotBaseFrame>base_footprint</robotBaseFrame>
+  </plugin>
+</gazebo>
+
+</robot>
