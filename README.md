@@ -1,3 +1,6 @@
+# Mini-Lab packages for ROS kinetic
+This branch contains the kinetic version of Minilab packages
+
 # Mini-Lab packages
 Please refere to the robot wiki entry in the link below: http://wiki.ros.org/Mini-Lab
 
