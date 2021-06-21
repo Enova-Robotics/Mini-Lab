@@ -1,5 +1,5 @@
-  global_frame: /odom
-  robot_base_frame: /base_link
+  global_frame: odom
+  robot_base_frame: base_link
   plugins:
     - {name: obstacles, type: "costmap_2d::ObstacleLayer"}
     - {name: inflated, type: "costmap_2d::InflationLayer"}
